@@ -42,3 +42,28 @@ function filterTransaction(value, sortType) {
     });
     return filterTransaction;
 }
+
+export const getMonths = (state) => {
+    var firstArr = new Array();
+    var monthArr = new Array();
+
+    _.map(state.transaction.fetchTransaction, (transaction, index) => {
+        var length = state.transaction.fetchTransaction.length;
+        var index = state.transaction.fetchTransaction.indexOf(transaction);
+
+        firstArr.push({ label: transaction.month, value: index });
+        if (firstArr.length == 3 || (firstArr.length < 3 && (length - index) < 3 && index > 2)) {
+            console.log('here condition..', index);
+            monthArr.push(firstArr);
+            firstArr = new Array();
+        }
+    });
+    return monthArr;
+}
+
+export const getYears = (state) => {
+
+    const years = _.map(state.transaction.fetchTransaction, (transaction, index) => {
+
+    });
+}

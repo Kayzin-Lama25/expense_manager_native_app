@@ -11,7 +11,7 @@ import rsf from '../../saga/firebaseSaga';
 
 import { call, takeLatest, put } from 'redux-saga/effects';
 import NavigationService from '../../navigation/NavigationService';
-import { getCurrentDate, getCurrentTime, getMonth } from '../../util/dateTimeUtil';
+import { getCurrentDate, getCurrentTime, getMonth, getYear } from '../../util/dateTimeUtil';
 
 function* saveExpense(action) {
     try {

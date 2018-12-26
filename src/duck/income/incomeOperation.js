@@ -12,10 +12,11 @@ import rsf from '../../saga/firebaseSaga';
 
 import { call, takeLatest, put } from 'redux-saga/effects';
 import NavigationService from '../../navigation/NavigationService';
-import { getCurrentDate, getCurrentTime, getMonth } from '../../util/dateTimeUtil';
+import { getCurrentDate, getCurrentTime, getMonth, getYear } from '../../util/dateTimeUtil';
 
 function* saveIncome(action) {
     try {
+        console.log(getYear(action.payload.date));
         const key = yield call(rsf.database.create, `income/${getMonth(action.payload.date)}`, {
             amount: action.payload.amount,
             income: action.payload.income,

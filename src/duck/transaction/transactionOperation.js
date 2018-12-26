@@ -3,7 +3,9 @@ import {
     FETCH_ALL_TRANSACTION_RECEIVED,
     FILTER_ALL_TRANSACTION_RECEIVED,
     FETCH_ALL_TRANSACTION_BY_SORT_TYPE,
-    CLOSE_MODAL
+    CLOSE_MODAL,
+    FETCH_MONTH_YEAR_AND_CATEGORIES,
+    FETCH_MONTH_YEAR_AND_CATEGORIES_RECEIVED
 } from './transactionType';
 
 import rsf from '../../saga/firebaseSaga';
@@ -13,7 +15,7 @@ import _ from 'lodash';
 
 import NavigationService from '../../navigation/NavigationService';
 
-import { getAllTransactionByToday } from '../transaction/transactionSelector';
+import { getAllTransactionByToday, getMonths } from '../transaction/transactionSelector';
 
 function* fetchAllTransaction() {
     try {
@@ -22,7 +24,7 @@ function* fetchAllTransaction() {
         const expenseList = yield call(rsf.database.read, 'expense');
 
         const transactionList = getTotalTransaction(incomeList, expenseList);
-
+        console.log(JSON.stringify(transactionList));
         yield put({ type: FETCH_ALL_TRANSACTION_RECEIVED, payload: transactionList });
         yield put({ type: FILTER_ALL_TRANSACTION_RECEIVED, payload: transactionList });
 
@@ -115,4 +117,20 @@ function* fetchAllTransactionBySortType(action) {
 
 export function* watchFetchAllTransactionBySort() {
     yield takeLatest(FETCH_ALL_TRANSACTION_BY_SORT_TYPE, fetchAllTransactionBySortType);
+}
+
+
+function* fetchMonthYearAndCategories() {
+    try {
+        const months = yield select(getMonths);
+
+        yield put({ type: FETCH_MONTH_YEAR_AND_CATEGORIES_RECEIVED, payload: months });
+
+    } catch (error) {
+        console.warn("fetch month failed");
+    }
+}
+
+export function* watchFetchMonthYearAndCategories() {
+    yield takeLatest(FETCH_MONTH_YEAR_AND_CATEGORIES, fetchMonthYearAndCategories);
 }

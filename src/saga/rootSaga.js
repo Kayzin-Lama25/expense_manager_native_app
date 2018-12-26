@@ -4,7 +4,7 @@ import { fork } from 'redux-saga/effects';
 import { watchSaveIncome } from '../duck/income/incomeOperation';
 import { watchSaveExpense } from '../duck/expense/expenseOperation';
 import { watchFetchAmount } from '../duck/main/mainOperation';
-import { watchFetchAllTransaction, watchFetchAllTransactionBySort } from '../duck/transaction/transactionOperation';
+import { watchFetchAllTransaction, watchFetchAllTransactionBySort, watchFetchMonthYearAndCategories } from '../duck/transaction/transactionOperation';
 
 export default function* rootSaga() {
 
@@ -13,6 +13,7 @@ export default function* rootSaga() {
         fork(watchSaveExpense),
         fork(watchFetchAmount),
         fork(watchFetchAllTransaction),
-        fork(watchFetchAllTransactionBySort)
+        fork(watchFetchAllTransactionBySort),
+        fork(watchFetchMonthYearAndCategories)
     ]
 }

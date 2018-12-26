@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
+import PieChart from 'react-native-pie-chart';
 
 import ImageButton from '../component/ImageButton';
 import Icon from '../theme/Icon';
@@ -28,19 +29,19 @@ class MainScreen extends Component {
 
         const { income, expense, balance } = this.props.main;
 
-        const data = [
-            [0, 1],
-            [1, 3],
-            [3, 7],
-            [4, 9],
-        ];
+        const chart_wh = 250
+        const series = [123, 321, 123, 789, 537];
+        const sliceColor = ['#F44336', '#2196F3', '#FFEB3B', '#4CAF50', '#FF9800'];
 
         return (
             <View style={{ flex: 1 }}>
                 <View style={outerBox}>
                     <View style={{ flex: 0.8, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                        {/* <Image source={require('../icon/chart.png')} />here chart */}
-
+                        <PieChart
+                            chart_wh={200}
+                            series={series}
+                            sliceColor={sliceColor}
+                        />
                     </View>
                     <View style={chartTextContentStyle}>
                         <Text style={chartTextStyle}>Current Month Chart-December 2018</Text>

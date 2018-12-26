@@ -5,3 +5,5 @@ export const FETCH_ALL_TRANSACTION_BY_SORT_TYPE = 'fetch_all_transaction_by_sort
 export const CLOSE_MODAL = 'close_modal';
 export const OPEN_MODAL = 'open_modal';
 export const SELECT_RADIO_VALUE = 'select_radio_value';
+export const FETCH_MONTH_YEAR_AND_CATEGORIES = 'fetch_month_year_and_categories';
+export const FETCH_MONTH_YEAR_AND_CATEGORIES_RECEIVED = 'fetch_month_year_and_categories_received';

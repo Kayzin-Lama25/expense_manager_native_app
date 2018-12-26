@@ -4,7 +4,7 @@ import {
     CLOSE_MODAL,
     OPEN_MODAL,
     SELECT_RADIO_VALUE,
-    GET_FILTER
+    FETCH_MONTH_YEAR_AND_CATEGORIES
 } from './transactionType';
 
 export const fetchAllTransaction = () => {
@@ -39,8 +39,8 @@ export const selectRadioValue = (value) => {
     }
 }
 
-export const getFilter = () => {
+export const fetchMonthYearAndCategories = () => {
     return {
-        type: GET_FILTER
+        type: FETCH_MONTH_YEAR_AND_CATEGORIES
     }
 }

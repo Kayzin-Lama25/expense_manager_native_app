@@ -84,4 +84,20 @@ function getLastSevenDate() {
     return seven;
 }
 
-export { getCurrentDate, getCurrentTime, getMonth, convertStringToDate, getMonthAndDateFormat, getYesterDayDate, getLastSevenDate, getLastMonth };
+function getYear(date) {
+    var today = new Date(date);
+    var yyy = today.getFullYear();
+    return yyy;
+}
+
+export {
+    getCurrentDate,
+    getCurrentTime,
+    getMonth,
+    getYear,
+    convertStringToDate,
+    getMonthAndDateFormat,
+    getYesterDayDate,
+    getLastSevenDate,
+    getLastMonth
+};
